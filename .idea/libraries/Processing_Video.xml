@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Processing Video">
+    <CLASSES>
+      <root url="file://$USER_HOME$/processing-video-master" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/processing-video-master/processing-video-master/resources/code" />
+      <root url="file://$USER_HOME$/processing-video-master/processing-video-master/src" />
+    </SOURCES>
+  </library>
+</component>
