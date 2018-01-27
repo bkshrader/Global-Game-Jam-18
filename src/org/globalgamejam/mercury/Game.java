@@ -7,6 +7,7 @@
 
 package org.globalgamejam.mercury;
 
+import org.globalgamejam.mercury.state.StateManager;
 import processing.core.PApplet;
 import processing.opengl.PJOGL;
 
@@ -14,9 +15,10 @@ public class Game extends PApplet {
     /*
     Wartime Supply Chains
 
-    Play as a wartime supply chain manager where you view the world only as a map showing
-    your established territories and supply chains. The only information you receive about
-    the combat happening in the world is the effects actions are having on your supply network.
+    Play as a wartime supply chain manager in a steampunk alternate reality where as a player,
+    you can view the world only as a map showing your established territories and supply chains.
+    The only information you receive about the combat happening in the world is the effects
+    actions are having on your supply network.
 
     The combat taking place is conducted by the computer, but the actions of the player determine
     the probability of success or failure. You must work considerately to ensure that all of your
@@ -35,18 +37,31 @@ public class Game extends PApplet {
         - Troops and Vehicles
 
     Additional Ideas:
-        - Command Centers and Bases with different capabilities based on size and cost to make
-            - Allow player to set base radius and priority
-                - Radius spreads resources or concentrates them
-                - Priority determines how many troops will be sent to defend territory when contested
         - Network effectiveness reports to aid in decision making
         - Spy networks to help predict outcomes
 
     Balance and Mechanics:
-        -
+        - Structures:
+            - Bases
+                - Produce Units
+                - Restock Zeppelins
+            - Outposts
+            - Both claim territory
+                - Control Radius
+                    - Hold more land and earn more money
+                    - Hold less land and have more fortitude
+                - Control Priority
+                    - Likelihood more units will be sent to defend
+                    - Likelihood more units will remain stationed
+                - Territory generates revenue based on size
+        - Units
+            - Trucks
+                - Can carry anything very quickly, but only on roads
+                -
      */
 
     private static Game instance;
+    private boolean noDisplay;
     private StateManager stateManager;
 
     @SuppressWarnings("WeakerAccess")
@@ -56,7 +71,13 @@ public class Game extends PApplet {
         }
         instance = this;
 
+        this.noDisplay = false;
         this.stateManager = StateManager.getInstance();
+    }
+
+    public Game(boolean noDisplay) throws IllegalStateException {
+        this();
+        this.noDisplay = noDisplay;
     }
 
     /* TODO
@@ -110,6 +131,16 @@ public class Game extends PApplet {
 
     @Override
     public void setup() {
+        this.surface.setVisible(!noDisplay);
+        this.stateManager.init();
         this.background(0);
+    }
+
+    @Override
+    public void draw() {
+        this.background(0);
+        this.stateManager.renderActiveState(this);
+
+        this.stateManager.updateActiveState();
     }
 }

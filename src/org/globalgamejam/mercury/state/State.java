@@ -5,9 +5,13 @@
  * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
  */
 
-package org.globalgamejam.mercury;
+package org.globalgamejam.mercury.state;
+
+import org.globalgamejam.mercury.Renderable;
 
 public interface State extends Renderable {
+    void init();
+
     void start();
 
     void stop();

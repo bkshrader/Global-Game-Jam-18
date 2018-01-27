@@ -6,7 +6,7 @@ public class GameTest {
 
     @Test(expected = IllegalStateException.class)
     @SuppressWarnings({"unused", "UnusedAssignment"})
-    public void testDoubleInitialization() {
+    public void testDoubleInitializationException() {
         Game g = new Game();
         g = new Game();
     }
