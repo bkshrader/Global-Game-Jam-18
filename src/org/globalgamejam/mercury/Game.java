@@ -26,7 +26,7 @@ public class Game extends PApplet {
 
     Types of Supply Chain:
         - Roads
-        - Airstrips
+        - Airports (Part of bases)
         - Radio Antennae
 
     Types of Supplies:
@@ -35,7 +35,7 @@ public class Game extends PApplet {
         - Weapons and Ammunition
         - Troops and Vehicles
 
-    Additional Ideas:
+    Additional Ideas / Future Updates:
         - Network effectiveness reports to aid in decision making
         - Spy networks to help predict outcomes
 
@@ -115,6 +115,7 @@ public class Game extends PApplet {
             - Render themselves and tell their children to render themselves
             - Game States:
                 - Opening Vanity Cards
+                - Opening Cutscene
                 - Main Menu
                 - Loading Screen
                 - Gameplay
@@ -122,7 +123,6 @@ public class Game extends PApplet {
                     * Pause Menu
                     * Info Panel
                     * Action Menu
-                - Credits
         - Create a map which can:
             - Render itself and tell its children to render themselves
             - Keep track of combat variables such as unit count and resources
@@ -169,7 +169,10 @@ public class Game extends PApplet {
     public void draw() {
         this.background(0);
         this.stateManager.renderActiveState(this);
-
         this.stateManager.updateActiveState();
+
+        this.fill(255);
+        this.textAlign(LEFT, TOP);
+        this.text(String.format("%.0f", this.frameRate), 5, 5);
     }
 }
