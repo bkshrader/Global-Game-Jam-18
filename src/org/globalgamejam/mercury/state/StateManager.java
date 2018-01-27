@@ -1,8 +1,7 @@
 /*
- * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0
- * United States License. To view a copy of this license, visit
- * http://creativecommons.org/licenses/by-nc-sa/3.0/us/
- * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
+ * To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to
+ * Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
  */
 
 package org.globalgamejam.mercury.state;
@@ -72,22 +71,18 @@ public class StateManager {
     }
 
     public boolean isActiveStateRunning() {
-        if (this.hasActiveState())
-            return this.activeState.isRunning();
-        return false;
+        return this.hasActiveState() && this.activeState.isRunning();
     }
 
-    public boolean isActiveStateFinished() {
-        if (this.hasActiveState())
-            return this.activeState.isFinished();
-        return true;
+    private boolean isActiveStateFinished() {
+        return !this.hasActiveState() || this.activeState.isFinished();
     }
 
-    public boolean hasActiveState() {
+    private boolean hasActiveState() {
         return this.activeState != null;
     }
 
-    public boolean hasNextState() {
+    private boolean hasNextState() {
         return this.nextState != null;
     }
 }
