@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Global Game Jam 2018:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Global_Game_Jam_2018_jar</output-path>
+    <root id="archive" name="Global Game Jam 2018_jar.jar">
+      <element id="archive" name="Global Game Jam 2018.jar">
+        <element id="module-output" name="Global Game Jam 2018" />
+        <element id="dir-copy" path="$USER_HOME$/processing-video-master" />
+      </element>
+      <element id="library" level="project" name="Processing 3.3.6" />
+      <element id="library" level="project" name="Processing Sound" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/out/production/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
