@@ -40,13 +40,14 @@ public class Game extends PApplet {
         - Network effectiveness reports to aid in decision making
         - Spy networks to help predict outcomes
 
-    Balance and Mechanics:
+    Mechanics:
         - Structures:
             - Bases
                 - Produce Units
                 - Restock Zeppelins
             - Outposts
-            - Both claim territory
+                - Only claim Territory
+            * Both claim territory
                 - Control Radius
                     - Hold more land and earn more money
                     - Hold less land and have more fortitude
@@ -54,14 +55,43 @@ public class Game extends PApplet {
                     - Likelihood more units will be sent to defend
                     - Likelihood more units will remain stationed
                 - Territory generates revenue based on size
+            - Radio Towers
+                - Transmit messages instantly when units are in range
+                - All bases and outposts are equipped with a corresponding size antenna
+                - Consume money at a rate based on broadcast radius
+            - Placing Structures
+                - Player can place structures at any time
+                - Once a structure is placed
+                    - Territory is immediately claimed
+                    - Structure is delivered via Truck or Zeppelin
+                - If territory is contested before Troops or Structure arrive
+                    - Territory is lost
+                    - Structure placement is cancelled
+                    - Portion of funds are refunded
+                - For a structure to be built
+                    - Level ground / No obstacles
+                    - Territory not already owned by enemy
+                    - Sufficient Funds
         - Units
             - Trucks
+                - Do not conduct combat, but can be destroyed by enemy
                 - Can carry anything very quickly, but only on roads
-                -
+            - Infantry
+                - Conduct combat and can carry messages
+                - Require constant supply of resources to be effective
+            - Zeppelin
+                - Conduct combat and can carry both messages and resources
+                - Can traverse any terrain including mountains
+                - Very slow movement
+            - Purchasing Units
+                - Allow AI to choose?
+                - Player purchases individual units?
+                - Player sets unit ratio and budget?
+                - Player sets unit count and computer buys?
      */
 
     private static Game instance;
-    private boolean noDisplay;
+    private boolean noDisplay; //Used for automated unit testing
     private StateManager stateManager;
 
     @SuppressWarnings("WeakerAccess")
