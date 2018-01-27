@@ -43,7 +43,7 @@ public class VanityCardState implements State {
     }
 
     @Override
-    public boolean isRunning() { //TODO: Not sure this is actually ever useful
+    public boolean isRunning() { //TODO: Not sure this is actually ever useful except in unit tests
         return startTimeMilliseconds > 0 && !this.isFinished;
     }
 
