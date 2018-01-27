@@ -1,7 +1,14 @@
+/*
+ * This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0
+ * United States License. To view a copy of this license, visit
+ * http://creativecommons.org/licenses/by-nc-sa/3.0/us/
+ * or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+ */
+
 package org.globalgamejam.mercury;
 
 import processing.core.PApplet;
-import processing.core.PConstants;
+import processing.opengl.PJOGL;
 
 public class Game extends PApplet {
     /*
@@ -39,9 +46,23 @@ public class Game extends PApplet {
         -
      */
 
+    private static Game instance;
+    private StateManager stateManager;
+
+    @SuppressWarnings("WeakerAccess")
+    public Game() throws IllegalStateException {
+        if (instance != null) {
+            throw new IllegalStateException("Game is already initialized. Cannot initialize again.");
+        }
+        instance = this;
+
+        this.stateManager = StateManager.getInstance();
+    }
+
     /* TODO
         - Create and manage game states and transitions
             - Determine how/when to transition to another state
+            - Render themselves and tell their children to render themselves
             - Game States:
                 - Opening Vanity Cards
                 - Main Menu
@@ -74,21 +95,21 @@ public class Game extends PApplet {
 
      */
     public static void main(String[] args) {
-        PApplet.main(Game.class);
+        PApplet.main(Game.class.getCanonicalName());
+    }
+
+    public static PApplet getInstance() {
+        return instance;
     }
 
     @Override
     public void settings() {
-        this.fullScreen(PConstants.P2D);
+        this.fullScreen(P2D, SPAN);
+        PJOGL.setIcon();
     }
 
     @Override
     public void setup() {
         this.background(0);
-    }
-
-    @Override
-    public void draw() {
-
     }
 }
