@@ -16,6 +16,14 @@ public class SoundManager {
         return ourInstance;
     }
 
+    /*
+    Daniel_Birch_-_05_-_Forgotten_Landscape.mp3 - Ambience
+    Komiku_-_62_-_The_Challenge.mp3 - Ambience
+    David_Hilowitz_-_01_-_Displaced_Memories.mp3 - Title Theme
+    Art_Of_Escapism_-_Return_to_War.mp3 - Victory
+    Anonymous420_-_08_-_O_X_L2_X_-_O_R1.mp3 - Defeat
+     */
+
     public void init() {
 
     }
